@@ -10,7 +10,7 @@ const SEO: NextSeoProps = {
     'Bienvenido a La Esquina del Código, tu fuente de tips y tutoriales sobre programación, reseñas de periféricos y opiniones personales sobre el sector IT. ¡Explora nuestro contenido ahora!',
   openGraph: {
     type: 'website',
-    images: [{ url: `/images/og.jpg` }],
+    images: [{ url: `${config.host}/images/og.jpg` }],
   },
 }
 
