@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-secondary bg-waves bg-cover bg-center bg-no-repeat;
+  }
+
+  body {
+    @apply text-neutral;
+  }
+
+  a {
+    @apply text-primary underline underline-offset-4;
+  }
+
+  ::-webkit-scrollbar {
+    @apply h-2 w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded bg-primary;
+  }
+}
