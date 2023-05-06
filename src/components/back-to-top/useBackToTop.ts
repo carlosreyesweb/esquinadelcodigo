@@ -26,6 +26,7 @@ export function useBackToTop(
   }, [show, hide])
 
   useEffect(() => {
+    toggleButton()
     window.addEventListener('scroll', toggleButton)
     return () => window.removeEventListener('scroll', toggleButton)
   }, [toggleButton])
