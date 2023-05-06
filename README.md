@@ -27,4 +27,4 @@ On top of that, I'm using the Vertical Slicing approach, which is a way of organ
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
