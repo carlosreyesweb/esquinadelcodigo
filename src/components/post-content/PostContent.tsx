@@ -1,6 +1,6 @@
 import { Post } from '@/modules/posts'
 import toc from '@jsdevtools/rehype-toc'
-import 'highlight.js/styles/github-dark.css'
+import 'highlight.js/styles/github-dark-dimmed.css'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
@@ -16,10 +16,7 @@ export default function PostMain({ data }: PostMainProps) {
       className="prose prose-primary max-w-none overflow-x-hidden prose-pre:p-0"
       rehypePlugins={[
         [rehypeHighlight, { ignoreMissing: true }],
-        [
-          rehypeExternalLinks,
-          { target: '_blank', rel: ['noopener', 'noreferrer'] },
-        ],
+        [rehypeExternalLinks, { target: '_blank' }],
         rehypeSlug,
         toc,
       ]}
