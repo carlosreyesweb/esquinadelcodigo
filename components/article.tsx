@@ -1,6 +1,7 @@
 import { useReadingTime } from "@/hooks/use-reading-time"
 import { Post } from "@/modules/posts"
-import dayjs from "dayjs"
+import { formatRelative } from "date-fns"
+import { es } from "date-fns/locale"
 import Link from "next/link"
 import { Badge } from "./ui/badge"
 import { Typography } from "./ui/typography"
@@ -10,7 +11,9 @@ interface ArticleProps {
 }
 export function Article({ data }: ArticleProps) {
   const link = `/${encodeURIComponent(data.slug)}`
-  const createdAt = dayjs(data.createdAt).format("LL")
+  const createdAt = formatRelative(new Date(data.createdAt), new Date(), {
+    locale: es,
+  })
   const { readingTimeString } = useReadingTime(data.content)
 
   return (
