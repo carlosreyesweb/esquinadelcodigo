@@ -2,7 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { Suspense } from "react"
 import { SearchForm } from "./search-form"
+import { SearchFormSkeleton } from "./search-form-skeleton"
 import { Typography } from "./ui/typography"
 
 export function Header() {
@@ -23,7 +25,9 @@ export function Header() {
             Un blog de Carlos Reyes Web
           </Typography>
         </Typography>
-        <SearchForm />
+        <Suspense fallback={<SearchFormSkeleton />}>
+          <SearchForm />
+        </Suspense>
       </div>
     </header>
   )
