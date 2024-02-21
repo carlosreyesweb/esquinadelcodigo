@@ -3,4 +3,6 @@ export const clientEnvironment = Object.freeze({
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
 });
 
-export const serverEnvironment = Object.freeze({});
+export const serverEnvironment = Object.freeze({
+  storyblokToken: process.env.STORYBLOK_TOKEN,
+});

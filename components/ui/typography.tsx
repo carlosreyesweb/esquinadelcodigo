@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import * as React from "react";
+import { forwardRef } from "react";
 
 const typographyVariants = cva("text-foreground", {
   variants: {
@@ -15,9 +15,8 @@ const typographyVariants = cva("text-foreground", {
       p: "leading-7 [&:not(:first-child)]:mt-6",
       blockquote: "mt-6 border-l-2 pl-6 italic",
       ul: "my-6 ml-6 list-disc [&>li]:mt-2",
-      ol: "my-6 ml-l list-decimal [&>li]:mt-2",
-      inlineCode:
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold",
+      ol: "my-6 ml-6 list-decimal [&>li]:mt-2",
+      inlineCode: "font-mono font-semibold",
       lead: "text-xl text-muted-foreground",
       largeText: "text-lg font-semibold",
       smallText: "text-sm font-medium leading-none",
@@ -59,7 +58,7 @@ export interface TypographyProps
   as?: string;
 }
 
-const Typography = React.forwardRef<HTMLElement, TypographyProps>(
+const Typography = forwardRef<HTMLElement, TypographyProps>(
   ({ className, variant, as, asChild, ...props }, ref) => {
     const Comp = asChild
       ? Slot
