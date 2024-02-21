@@ -1,15 +1,15 @@
-import { cn } from "@/lib/utils";
-import toc from "@jsdevtools/rehype-toc";
-import "highlight.js/styles/github-dark.min.css";
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import rehypeExternalLinks from "rehype-external-links";
-import rehypeHighlight from "rehype-highlight";
-import rehypeSlug from "rehype-slug";
-import { Typography } from "./ui/typography";
+import { cn } from "@/lib/utils"
+import toc from "@jsdevtools/rehype-toc"
+import "highlight.js/styles/github-dark.min.css"
+import Image from "next/image"
+import ReactMarkdown from "react-markdown"
+import rehypeExternalLinks from "rehype-external-links"
+import rehypeHighlight from "rehype-highlight"
+import rehypeSlug from "rehype-slug"
+import { Typography } from "./ui/typography"
 
 interface ArticleContentProps {
-  content: string;
+  content: string
 }
 export default function ArticleContent({ content }: ArticleContentProps) {
   return (
@@ -50,14 +50,14 @@ export default function ArticleContent({ content }: ArticleContentProps) {
           />
         ),
         pre: ({ node, ref, className, ...props }) => (
-          <pre {...props} className={cn("border mt-6", className)} />
+          <pre {...props} className={cn("mt-6 border", className)} />
         ),
         img: ({ src, alt, title }) => {
-          if (!src) return null;
+          if (!src) return null
           const [width, height] = src
             .split("/")[5]
             .split("x")
-            .map((dimension) => parseInt(dimension));
+            .map((dimension) => parseInt(dimension))
 
           return (
             <Image
@@ -68,11 +68,11 @@ export default function ArticleContent({ content }: ArticleContentProps) {
               width={width}
               height={height}
             />
-          );
+          )
         },
       }}
     >
       {content}
     </ReactMarkdown>
-  );
+  )
 }

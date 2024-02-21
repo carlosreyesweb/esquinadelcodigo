@@ -1,24 +1,24 @@
-import { useReadingTime } from "@/hooks/use-reading-time";
-import { Post } from "@/modules/posts";
-import dayjs from "dayjs";
-import Link from "next/link";
-import { Badge } from "./ui/badge";
-import { Typography } from "./ui/typography";
+import { useReadingTime } from "@/hooks/use-reading-time"
+import { Post } from "@/modules/posts"
+import dayjs from "dayjs"
+import Link from "next/link"
+import { Badge } from "./ui/badge"
+import { Typography } from "./ui/typography"
 
 interface ArticleProps {
-  data: Post;
+  data: Post
 }
 export function Article({ data }: ArticleProps) {
-  const link = `/${encodeURIComponent(data.slug)}`;
-  const createdAt = dayjs(data.createdAt).format("LL");
-  const { readingTimeString } = useReadingTime(data.content);
+  const link = `/${encodeURIComponent(data.slug)}`
+  const createdAt = dayjs(data.createdAt).format("LL")
+  const { readingTimeString } = useReadingTime(data.content)
 
   return (
     <Link
       href={link}
-      className="group block focus:outline-none hover:ring-2 ring-primary focus:ring-2"
+      className="group block ring-primary hover:ring-2 focus:outline-none focus:ring-2"
     >
-      <article className="space-y-3 px-5 py-4 border bg-card">
+      <article className="space-y-3 border bg-card px-5 py-4">
         <Typography variant="h3" className="text-primary">
           {data.title}
         </Typography>
@@ -36,7 +36,7 @@ export function Article({ data }: ArticleProps) {
               key={tag}
               asChild
               variant="outline"
-              className="text-primary border-primary"
+              className="border-primary text-primary"
             >
               <li>{tag}</li>
             </Badge>
@@ -44,5 +44,5 @@ export function Article({ data }: ArticleProps) {
         </ul>
       </article>
     </Link>
-  );
+  )
 }

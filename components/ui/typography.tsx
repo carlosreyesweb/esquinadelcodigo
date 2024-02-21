@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
-import { Slot } from "@radix-ui/react-slot";
-import { VariantProps, cva } from "class-variance-authority";
-import { forwardRef } from "react";
+import { cn } from "@/lib/utils"
+import { Slot } from "@radix-ui/react-slot"
+import { VariantProps, cva } from "class-variance-authority"
+import { forwardRef } from "react"
 
 const typographyVariants = cva("text-foreground", {
   variants: {
@@ -26,9 +26,9 @@ const typographyVariants = cva("text-foreground", {
   defaultVariants: {
     variant: "p",
   },
-});
+})
 
-type VariantPropType = VariantProps<typeof typographyVariants>;
+type VariantPropType = VariantProps<typeof typographyVariants>
 
 const variantElementMap: Record<
   NonNullable<VariantPropType["variant"]>,
@@ -49,30 +49,30 @@ const variantElementMap: Record<
   mutedText: "p",
   ul: "ul",
   ol: "ol",
-};
+}
 
 export interface TypographyProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof typographyVariants> {
-  asChild?: boolean;
-  as?: string;
+  asChild?: boolean
+  as?: string
 }
 
 const Typography = forwardRef<HTMLElement, TypographyProps>(
   ({ className, variant, as, asChild, ...props }, ref) => {
     const Comp = asChild
       ? Slot
-      : as ?? (variant ? variantElementMap[variant] : undefined) ?? "div";
+      : as ?? (variant ? variantElementMap[variant] : undefined) ?? "div"
     return (
       <Comp
         className={cn(typographyVariants({ variant, className }))}
         ref={ref}
         {...props}
       />
-    );
-  }
-);
+    )
+  },
+)
 
-Typography.displayName = "Typography";
+Typography.displayName = "Typography"
 
-export { Typography, typographyVariants };
+export { Typography, typographyVariants }

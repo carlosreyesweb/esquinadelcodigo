@@ -1,4 +1,4 @@
-import { PostRepository } from '../domain/post-repository'
+import { PostRepository } from "../domain/post-repository"
 
 export function getPostBySlug(repo: PostRepository) {
   return async (slug: string) => {

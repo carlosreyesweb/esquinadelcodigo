@@ -1,6 +1,6 @@
-import { Post } from "./post";
+import { Post } from "./post"
 
 export interface PostMapper {
-  toPost(data: unknown): Post;
-  toPostsArray(data: unknown[]): Post[];
+  toPost(data: unknown): Post
+  toPostsArray(data: unknown[]): Post[]
 }

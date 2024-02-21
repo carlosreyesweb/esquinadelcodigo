@@ -1,8 +1,8 @@
-import { PostRepository } from "../domain/post-repository";
+import { PostRepository } from "../domain/post-repository"
 
 export function getAllPosts(repo: PostRepository) {
   return async () => {
-    const posts = await repo.index();
-    return posts;
-  };
+    const posts = await repo.index()
+    return posts
+  }
 }

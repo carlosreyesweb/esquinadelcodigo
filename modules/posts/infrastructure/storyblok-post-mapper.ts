@@ -1,6 +1,6 @@
-import { ISbStoryData } from "storyblok-js-client";
-import { Post } from "../domain/post";
-import { PostMapper } from "../domain/post-mapper";
+import { ISbStoryData } from "storyblok-js-client"
+import { Post } from "../domain/post"
+import { PostMapper } from "../domain/post-mapper"
 
 export class StoryblokPostMapper implements PostMapper {
   toPost(story: ISbStoryData) {
@@ -12,12 +12,12 @@ export class StoryblokPostMapper implements PostMapper {
       created_at: createdAt,
       published_at: updatedAt,
       content: { ogImage, cover, teaser, content },
-    } = story;
+    } = story
 
-    const [coverWidth, coverHeight] = this.getImageDimensions(cover.filename);
+    const [coverWidth, coverHeight] = this.getImageDimensions(cover.filename)
     const [ogImageWidth, ogImageHeight] = this.getImageDimensions(
-      ogImage.filename
-    );
+      ogImage.filename,
+    )
 
     const post: Post = {
       id,
@@ -42,20 +42,18 @@ export class StoryblokPostMapper implements PostMapper {
       teaser,
       content,
       updatedAt: updatedAt || createdAt,
-    };
-    return post;
+    }
+    return post
   }
 
   toPostsArray(stories: ISbStoryData[]) {
-    const posts = stories.map((story) => this.toPost(story));
-    return posts;
+    const posts = stories.map((story) => this.toPost(story))
+    return posts
   }
 
   private getImageDimensions(filename: string) {
-    const dimensions = filename.split("/")[5].split("x");
-    const numericDimensions = dimensions.map((dimension) =>
-      parseInt(dimension)
-    );
-    return numericDimensions as [number, number];
+    const dimensions = filename.split("/")[5].split("x")
+    const numericDimensions = dimensions.map((dimension) => parseInt(dimension))
+    return numericDimensions as [number, number]
   }
 }

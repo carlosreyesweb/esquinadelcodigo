@@ -1,12 +1,12 @@
-import { cn } from "@/lib/utils";
-import { Github, Globe, Instagram, Linkedin, Twitter } from "lucide-react";
-import { Button } from "./ui/button";
+import { cn } from "@/lib/utils"
+import { Github, Globe, Instagram, Linkedin, Twitter } from "lucide-react"
+import { Button } from "./ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./ui/tooltip";
+} from "./ui/tooltip"
 
 const socialLinks = [
   {
@@ -34,10 +34,10 @@ const socialLinks = [
     link: "https://twitter.com/carlosreyesweb",
     icon: Twitter,
   },
-];
+]
 
 interface SocialLinksProps {
-  className?: string;
+  className?: string
 }
 export function SocialLinks({ className }: SocialLinksProps) {
   return (
@@ -60,5 +60,5 @@ export function SocialLinks({ className }: SocialLinksProps) {
         ))}
       </ul>
     </TooltipProvider>
-  );
+  )
 }

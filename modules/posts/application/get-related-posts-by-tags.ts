@@ -1,4 +1,4 @@
-import { PostRepository } from '../domain/post-repository'
+import { PostRepository } from "../domain/post-repository"
 
 export function getRelatedPostsByTags(repo: PostRepository) {
   return async (tags: string[], excludingSlug: string) => {
