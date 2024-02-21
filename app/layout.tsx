@@ -3,7 +3,7 @@ import { Header } from "@/components/header"
 import { clientEnvironment } from "@/environment"
 import { cn } from "@/lib/utils"
 import { GoogleAnalytics } from "@next/third-parties/google"
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import { Roboto, Roboto_Mono } from "next/font/google"
 import "./globals.css"
 
@@ -36,6 +36,10 @@ export default function RootLayout({
   )
 }
 
+export const viewport: Viewport = {
+  themeColor: "#0d1017",
+}
+
 export const metadata: Metadata = {
   title: {
     template: "%s | La Esquina del Código",
@@ -43,4 +47,9 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(clientEnvironment.baseUrl),
   creator: "Carlos Reyes Web",
+  twitter: {
+    card: "summary_large_image",
+    creator: "@carlosreyesweb",
+  },
+  generator: "Next.js",
 }
