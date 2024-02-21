@@ -20,12 +20,13 @@ export function SearchForm() {
   }, 300);
 
   return (
-    <search role="searchbox">
-      <form className="flex items-center gap-x-2">
+    <search>
+      <form role="search" className="flex items-center gap-x-2">
         <Label htmlFor="search" className="sr-only">
           Búsqueda
         </Label>
         <Input
+          id="search"
           name="search"
           type="search"
           placeholder="Buscar posts..."
