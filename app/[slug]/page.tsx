@@ -54,18 +54,12 @@ export async function generateMetadata(
   const slug = params.slug
   const post = await postsModule.getPostBySlug(slug)
   if (!post) notFound()
-  const canonical = `${clientEnvironment.baseUrl}/${post.slug}`
-
-  const parentOgImages = (await parent).openGraph?.images || []
 
   return {
     title: post.title,
     description: post.teaser,
-    openGraph: {
-      images: [post.cover.src, ...parentOgImages],
-    },
     alternates: {
-      canonical,
+      canonical: `/${post.slug}`,
     },
   }
 }

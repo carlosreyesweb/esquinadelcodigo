@@ -36,5 +36,8 @@ export async function generateMetadata({
     description: search
       ? `Estos son los resultados que coinciden con tu búsqueda "${search}".`
       : "Un blog sobre programación y tecnología, creado por Carlos Reyes Web.",
+    alternates: {
+      canonical: "/",
+    },
   }
 }
