@@ -32,6 +32,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           src={post.cover}
           alt={post.title}
           className="mb-6 mt-2 block h-60 w-full object-cover object-center"
+          priority
         />
         <Typography variant="h1">{post.title}</Typography>
         <ArticleContent content={post.content} />
