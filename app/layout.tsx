@@ -1,8 +1,8 @@
 import { Footer } from "@/components/footer"
+import { GoogleAnalytics } from "@/components/google-analytics"
 import { Header } from "@/components/header"
 import { clientEnvironment } from "@/environment"
 import { cn } from "@/lib/utils"
-import { GoogleAnalytics } from "@next/third-parties/google"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Metadata, Viewport } from "next"
 import { Roboto, Roboto_Mono } from "next/font/google"
@@ -32,7 +32,7 @@ export default function RootLayout({
         <SpeedInsights />
       </body>
       {clientEnvironment.gaMeasurementId ? (
-        <GoogleAnalytics gaId={clientEnvironment.gaMeasurementId} />
+        <GoogleAnalytics gaID={clientEnvironment.gaMeasurementId} />
       ) : null}
     </html>
   )
