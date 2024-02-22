@@ -8,7 +8,7 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip"
 
-const socialLinks = [
+export const socialLinks = [
   {
     name: "Website",
     link: "https://www.carlosreyesweb.com",

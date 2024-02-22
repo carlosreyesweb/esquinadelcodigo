@@ -1,6 +1,7 @@
 import ArticleContent from "@/components/article-content"
 import { ArticlesList } from "@/components/articles-list"
 import { ArticlesListSkeleton } from "@/components/articles-list-skeleton"
+import { socialLinks } from "@/components/social-links"
 import TweetButton from "@/components/tweet-button"
 import { Typography } from "@/components/ui/typography"
 import { clientEnvironment } from "@/environment"
@@ -11,6 +12,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
+import { Article, WithContext } from "schema-dts"
 
 interface ArticlePageProps {
   params: { slug: string }
@@ -19,6 +21,27 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const post = await postsModule.getPostBySlug(params.slug)
   if (!post) notFound()
   const shareUrl = `${clientEnvironment.baseUrl}/${post.slug}`
+
+  const authorUrl = "https://www.carlosreyesweb.com"
+  const jsonLd: WithContext<Article> = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    image: post.cover.src,
+    url: shareUrl,
+    abstract: post.teaser,
+    datePublished: post.createdAt,
+    author: {
+      "@type": "Person",
+      name: "Carlos Reyes",
+      brand: "Carlos Reyes Web",
+      jobTitle: "Frontend Developer",
+      url: authorUrl,
+      sameAs: socialLinks
+        .filter((link) => link.link !== authorUrl)
+        .map((link) => link.link),
+    },
+  }
 
   return (
     <>
@@ -48,6 +71,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <ArticlesList tags={post.tags} excludeSlug={post.slug} />
         </Suspense>
       </aside>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   )
 }
