@@ -29,11 +29,11 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        {clientEnvironment.gaMeasurementId ? (
+          <GoogleAnalytics gaId={clientEnvironment.gaMeasurementId} />
+        ) : null}
+        <SpeedInsights />
       </body>
-      {clientEnvironment.gaMeasurementId ? (
-        <GoogleAnalytics gaId={clientEnvironment.gaMeasurementId} />
-      ) : null}
-      <SpeedInsights />
     </html>
   )
 }
