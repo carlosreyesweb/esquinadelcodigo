@@ -1,5 +1,6 @@
 import ArticleContent from "@/components/article-content"
 import { ArticlesList } from "@/components/articles-list"
+import { ArticlesListSkeleton } from "@/components/articles-list-skeleton"
 import TweetButton from "@/components/tweet-button"
 import { Typography } from "@/components/ui/typography"
 import { clientEnvironment } from "@/environment"
@@ -9,6 +10,7 @@ import { Metadata, ResolvingMetadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 
 interface ArticlePageProps {
   params: { slug: string }
@@ -42,7 +44,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <Typography variant="h4" as="h2" className="text-center">
           Artículos relacionados
         </Typography>
-        <ArticlesList tags={post.tags} excludeSlug={post.slug} />
+        <Suspense fallback={<ArticlesListSkeleton length={2} />}>
+          <ArticlesList tags={post.tags} excludeSlug={post.slug} />
+        </Suspense>
       </aside>
     </>
   )

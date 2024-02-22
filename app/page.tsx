@@ -17,7 +17,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
       <Typography variant="h4" as="h2" className="text-center">
         {search ? `Resultados para "${search}"` : "Últimos artículos"}
       </Typography>
-      <Suspense key={search} fallback={<ArticlesListSkeleton />}>
+      <Suspense key={search} fallback={<ArticlesListSkeleton length={6} />}>
         <ArticlesList search={search} />
       </Suspense>
     </main>
