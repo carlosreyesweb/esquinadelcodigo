@@ -23,13 +23,13 @@ export default function ArticleContent({ content }: ArticleContentProps) {
       components={{
         h1: ({ node, ref, ...props }) => <Typography variant="h1" {...props} />,
         h2: ({ node, ref, ...props }) => (
-          <Typography variant="h2" className="mt-10" {...props} />
+          <Typography variant="h2" className="mt-8" {...props} />
         ),
         h3: ({ node, ref, ...props }) => (
-          <Typography variant="h3" className="mt-8" {...props} />
+          <Typography variant="h3" className="mt-6" {...props} />
         ),
         h4: ({ node, ref, ...props }) => (
-          <Typography variant="h4" className="mt-6" {...props} />
+          <Typography variant="h4" className="mt-4" {...props} />
         ),
         p: ({ node, ref, ...props }) => <Typography variant="p" {...props} />,
         code: ({ node, ref, ...props }) => (
@@ -50,7 +50,7 @@ export default function ArticleContent({ content }: ArticleContentProps) {
           />
         ),
         pre: ({ node, ref, className, ...props }) => (
-          <pre {...props} className={cn("mt-6 border", className)} />
+          <pre {...props} className={cn("mt-4 border", className)} />
         ),
         img: ({ src, alt, title }) => {
           if (!src) return null
