@@ -16,5 +16,4 @@ export interface Post {
   createdAt: string
   updatedAt: string
   cover: PostImage
-  ogImage: PostImage
 }

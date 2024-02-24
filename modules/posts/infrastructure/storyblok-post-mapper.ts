@@ -11,13 +11,10 @@ export class StoryblokPostMapper implements PostMapper {
       tag_list: tags,
       created_at: createdAt,
       published_at: updatedAt,
-      content: { ogImage, cover, teaser, content },
+      content: { cover, teaser, content },
     } = story
 
     const [coverWidth, coverHeight] = this.getImageDimensions(cover.filename)
-    const [ogImageWidth, ogImageHeight] = this.getImageDimensions(
-      ogImage.filename,
-    )
 
     const post: Post = {
       id,
@@ -31,13 +28,6 @@ export class StoryblokPostMapper implements PostMapper {
         alt: cover.alt,
         width: coverWidth,
         height: coverHeight,
-      },
-      ogImage: {
-        id: ogImage.id,
-        src: ogImage.filename,
-        alt: ogImage.alt,
-        width: ogImageWidth,
-        height: ogImageHeight,
       },
       teaser,
       content,
