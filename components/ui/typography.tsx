@@ -13,7 +13,7 @@ const typographyVariants = cva("text-foreground", {
       h5: "scroll-m-20 text-lg font-semibold tracking-tight",
       h6: "scroll-m-20 text-base font-semibold tracking-tight",
       p: "leading-7 [&:not(:first-child)]:mt-4",
-      blockquote: "mt-4 border-l-2 pl-6 italic",
+      blockquote: "mt-4 border-l-2 pl-6",
       ul: "my-4 ml-6 list-disc [&>li]:mt-2 [&_ul]:my-2",
       ol: "my-4 ml-6 list-decimal [&>li]:mt-2 [&_ol]:my-2",
       inlineCode: "font-mono font-semibold",
