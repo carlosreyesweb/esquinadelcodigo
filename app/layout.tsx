@@ -1,3 +1,4 @@
+import { AdSense } from "@/components/adsense"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { clientEnvironment } from "@/environment"
@@ -25,6 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn(sansFont.variable, monoFont.variable)}>
+      <head>
+        {clientEnvironment.adsenseClient ? (
+          <AdSense client={clientEnvironment.adsenseClient} />
+        ) : null}
+      </head>
       <body className="grid min-h-screen grid-rows-[auto_1fr_auto]">
         <Header />
         {children}
