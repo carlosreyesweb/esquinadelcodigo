@@ -1,9 +1,8 @@
-import { AdSense } from "@/components/adsense"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { clientEnvironment } from "@/environment"
 import { cn } from "@/lib/utils"
-import { GoogleAnalytics } from "@next/third-parties/google"
+import { GoogleTagManager } from "@next/third-parties/google"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Metadata, Viewport } from "next"
 import { Roboto, Roboto_Mono } from "next/font/google"
@@ -26,20 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn(sansFont.variable, monoFont.variable)}>
-      <head>
-        {clientEnvironment.adsenseClient ? (
-          <AdSense client={clientEnvironment.adsenseClient} />
-        ) : null}
-      </head>
+      {clientEnvironment.gtmId ? (
+        <GoogleTagManager gtmId={clientEnvironment.gtmId} />
+      ) : null}
       <body className="grid min-h-screen grid-rows-[auto_1fr_auto]">
         <Header />
         {children}
         <Footer />
         <SpeedInsights />
       </body>
-      {clientEnvironment.gaMeasurementId ? (
-        <GoogleAnalytics gaId={clientEnvironment.gaMeasurementId} />
-      ) : null}
     </html>
   )
 }
