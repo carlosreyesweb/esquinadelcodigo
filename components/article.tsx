@@ -5,6 +5,7 @@ import { Post } from "@/modules/posts"
 import { formatRelative } from "date-fns"
 import { es } from "date-fns/locale"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { Badge } from "./ui/badge"
 import { Typography } from "./ui/typography"
 
@@ -13,10 +14,14 @@ interface ArticleProps {
 }
 export function Article({ data }: ArticleProps) {
   const link = `/${encodeURIComponent(data.slug)}`
-  const createdAt = formatRelative(new Date(data.createdAt), new Date(), {
-    locale: es,
-  })
+  const [relativeCreatedAt, setRelativeCreatedAt] = useState("")
   const { readingTimeString } = useReadingTime(data.content)
+
+  useEffect(() => {
+    setRelativeCreatedAt(
+      formatRelative(new Date(data.createdAt), new Date(), { locale: es }),
+    )
+  }, [data.createdAt])
 
   return (
     <article className="group relative space-y-3 border bg-card px-5 py-4 ring-primary focus-within:ring-2 hover:ring-2">
@@ -27,7 +32,7 @@ export function Article({ data }: ArticleProps) {
         {data.teaser}
       </Typography>
       <Typography variant="smallText" className="block text-muted-foreground">
-        <time dateTime={data.createdAt}>{createdAt}</time>
+        <time dateTime={data.createdAt}>{relativeCreatedAt}</time>
         {" — "}
         <time>🕜 {readingTimeString}</time>
       </Typography>
